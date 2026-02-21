@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 35% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 220 30% 9%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 220 30% 9%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 210 100% 56%;
+    --primary-foreground: 220 35% 6%;
+
+    --secondary: 220 25% 14%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 220 25% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 210 100% 56%;
+    --accent-foreground: 220 35% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 25% 16%;
+    --input: 220 25% 14%;
+    --ring: 210 100% 56%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --electric-blue: 210 100% 56%;
+    --electric-blue-glow: 210 100% 65%;
+    --navy-deep: 220 35% 6%;
+    --navy-mid: 220 30% 9%;
+    --navy-card: 220 28% 12%;
+    --text-muted: 215 20% 55%;
+    --gradient-hero: linear-gradient(135deg, hsl(220, 45%, 5%) 0%, hsl(220, 40%, 10%) 50%, hsl(210, 50%, 8%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(220, 30%, 10%) 0%, hsl(220, 25%, 14%) 100%);
+    --glow-blue: 0 0 20px hsl(210 100% 56% / 0.4), 0 0 60px hsl(210 100% 56% / 0.15);
+    --glow-blue-sm: 0 0 10px hsl(210 100% 56% / 0.3);
+
+    --sidebar-background: 220 35% 6%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 210 100% 56%;
+    --sidebar-primary-foreground: 220 35% 6%;
+    --sidebar-accent: 220 25% 14%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 220 25% 16%;
+    --sidebar-ring: 210 100% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glow-blue {
+    box-shadow: var(--glow-blue);
+  }
+
+  .glow-blue-sm {
+    box-shadow: var(--glow-blue-sm);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(195, 100%, 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .bg-card-gradient {
+    background: var(--gradient-card);
+  }
+
+  .border-glow {
+    border: 1px solid hsl(var(--primary) / 0.3);
+  }
+
+  .section-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tech-grid {
+    background-image: 
+      linear-gradient(hsl(210 100% 56% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(210 100% 56% / 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px hsl(210 100% 56% / 0.3); }
+  50% { box-shadow: 0 0 35px hsl(210 100% 56% / 0.6), 0 0 70px hsl(210 100% 56% / 0.2); }
+}
+
+@keyframes slideInFromTop {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+.animate-fadeInLeft { animation: fadeInLeft 0.8s ease forwards; }
+.animate-fadeInRight { animation: fadeInRight 0.8s ease forwards; }
+.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+.animate-slideInTop { animation: slideInFromTop 0.5s ease forwards; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
